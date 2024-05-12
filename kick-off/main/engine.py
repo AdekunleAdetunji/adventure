@@ -31,9 +31,9 @@ class Engine():
         Base.metadata.create_all(bind=self.__engine)
         self.__session = Session(bind=self.__engine, expire_on_commit=False)
     
-    def get(self, orm_class, uuid):
-        """method to get a new ORM instance"""
-        return self.__session.query(orm_class).first(id=uuid)
+    def get_user(self, orm_class, username):
+        """method to get an ORM instance using the username"""
+        return self.__session.query(orm_class).filter(username==username).first()
     
     def post(self, orm_class, *args, **kwargs):
         """method to create a new ORM instance"""
