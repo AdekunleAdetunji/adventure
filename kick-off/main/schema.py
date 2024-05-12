@@ -20,12 +20,11 @@ class Base(DeclarativeBase):
 
 class BaseModel():
     """The basemodel for all table ORM"""
-    id = Column(UUID, default=uuid4(), primary_key=True)
-    created_at = Column(DateTime, default=datetime.now())
-    updated_at = Column(DateTime, default=datetime.now())
+    id = Column(UUID, default=uuid4, primary_key=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.now, nullable=False)
+    updated_at = Column(DateTime, default=datetime.now, nullable=False)
 
     def __init__(self, *args, **kwargs):
-        print(kwargs)
         for k, v in kwargs.items():
             setattr(self, k, v)
 
