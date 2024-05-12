@@ -21,3 +21,8 @@ class UserRes(BaseModel):
 class UserSignUp(UserRes):
     """Model to validate user sign up data"""
     password: str
+
+class Token(BaseModel):
+    """Model to hold generated JWT"""
+    access_token: str
+    access_type: str
